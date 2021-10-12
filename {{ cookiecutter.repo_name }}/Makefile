@@ -19,7 +19,7 @@ endif
 #################################################################################
 
 ## Make Dataset
-data: 
+data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
 ## Delete all compiled Python files
@@ -44,8 +44,10 @@ else
 	@bash -c "source `which virtualenvwrapper.sh`;mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER)"
 	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
 endif
-$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
-$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+
+install_dep:
+	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
+	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 
 #################################################################################
